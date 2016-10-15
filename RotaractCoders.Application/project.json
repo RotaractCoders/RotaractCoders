@@ -1,0 +1,12 @@
+{
+  "version": "1.0.0-*",
+
+  "dependencies": {
+    "RotaractCoders.Domain": "1.0.0-*",
+    "RotaractCoders.Repository": "1.0.0-*"
+  },
+
+  "frameworks": {
+    "dnx451": {}
+  }
+}
