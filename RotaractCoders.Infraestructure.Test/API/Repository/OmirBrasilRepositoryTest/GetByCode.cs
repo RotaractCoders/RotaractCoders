@@ -1,6 +1,6 @@
 ﻿using RotaractCoders.Domain.Enums;
 using RotaractCoders.Domain.Model;
-using RotaractCoders.Infraestructure.API.Repository;
+using RotaractCoders.Infraestructure.WebCroley.Repository;
 using System;
 using System.Collections.Generic;
 using Xunit;
