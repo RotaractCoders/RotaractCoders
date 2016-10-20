@@ -7,19 +7,27 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bots", "Bots", "{E0213D70-F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BackEnd", "BackEnd", "{B714D8C4-FFC2-4BCB-8D27-6F59C226325C}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "RotaractCoders.Application", "RotaractCoders.Application\RotaractCoders.Application.xproj", "{A9E1F365-78F7-4769-8A62-CE981845CDC2}"
-EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "RotaractCoders.Domain", "RotaractCoders.Domain\RotaractCoders.Domain.xproj", "{A39ECDE9-44C8-4F97-9E67-32298FA5F8AF}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "RotaractCoders.Repository", "RotaractCoders.Repository\RotaractCoders.Repository.xproj", "{F8D49960-DF3E-4009-A31E-1CCC6B80BFFE}"
-EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "RotaractCoders.WebCrawler", "RotaractCoders.WebCrawler\RotaractCoders.WebCrawler.xproj", "{915BBECD-F401-4946-9193-469DF558C279}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "RotaractCoders.Application.Test", "RotaractCoders.Application.Test\RotaractCoders.Application.Test.xproj", "{51FB4DAF-8590-4941-960A-777CA2010800}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{34FF11F9-D837-4177-BF7C-B5016B44DE4B}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "RotaractCoders.API", "RotaractCoders.API\RotaractCoders.API.xproj", "{DE667E06-4FBE-4A76-95D9-F766C7BF75FA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{4C2F3E5A-55E2-4838-B21D-8CEC3404F146}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "RotaractCoders.Common", "RotaractCoders.Common\RotaractCoders.Common.xproj", "{20ECEA8C-D944-4018-8157-F656C9D9EFA4}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "RotaractCoders.Infraestructure", "RotaractCoders.Infraestructure\RotaractCoders.Infraestructure.xproj", "{C3E9BAC1-9490-4E10-985D-0579135584CD}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "RotaractCoders.ApplicationService", "RotaractCoders.ApplicationService\RotaractCoders.ApplicationService.xproj", "{13B63C4C-2094-43C8-8248-120CBA832DF0}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "RotaractCoders.CrossCutting", "RotaractCoders.CrossCutting\RotaractCoders.CrossCutting.xproj", "{683991E2-E3B6-439F-AE8E-E6B6D1F1A94C}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "RotaractCoders.Infraestructure.Test", "RotaractCoders.Infraestructure.Test\RotaractCoders.Infraestructure.Test.xproj", "{F53AEA55-3BE9-4318-A929-49DEC15125B8}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "RotaractCoders.Domain.Test", "RotaractCoders.Domain.Test\RotaractCoders.Domain.Test.xproj", "{A8601A6B-5131-47E5-BA4A-92B1A3887814}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,40 +35,54 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A9E1F365-78F7-4769-8A62-CE981845CDC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A9E1F365-78F7-4769-8A62-CE981845CDC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A9E1F365-78F7-4769-8A62-CE981845CDC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A9E1F365-78F7-4769-8A62-CE981845CDC2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A39ECDE9-44C8-4F97-9E67-32298FA5F8AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A39ECDE9-44C8-4F97-9E67-32298FA5F8AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A39ECDE9-44C8-4F97-9E67-32298FA5F8AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A39ECDE9-44C8-4F97-9E67-32298FA5F8AF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F8D49960-DF3E-4009-A31E-1CCC6B80BFFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F8D49960-DF3E-4009-A31E-1CCC6B80BFFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F8D49960-DF3E-4009-A31E-1CCC6B80BFFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F8D49960-DF3E-4009-A31E-1CCC6B80BFFE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{915BBECD-F401-4946-9193-469DF558C279}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{915BBECD-F401-4946-9193-469DF558C279}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{915BBECD-F401-4946-9193-469DF558C279}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{915BBECD-F401-4946-9193-469DF558C279}.Release|Any CPU.Build.0 = Release|Any CPU
-		{51FB4DAF-8590-4941-960A-777CA2010800}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{51FB4DAF-8590-4941-960A-777CA2010800}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{51FB4DAF-8590-4941-960A-777CA2010800}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{51FB4DAF-8590-4941-960A-777CA2010800}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DE667E06-4FBE-4A76-95D9-F766C7BF75FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DE667E06-4FBE-4A76-95D9-F766C7BF75FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE667E06-4FBE-4A76-95D9-F766C7BF75FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE667E06-4FBE-4A76-95D9-F766C7BF75FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20ECEA8C-D944-4018-8157-F656C9D9EFA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20ECEA8C-D944-4018-8157-F656C9D9EFA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20ECEA8C-D944-4018-8157-F656C9D9EFA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20ECEA8C-D944-4018-8157-F656C9D9EFA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3E9BAC1-9490-4E10-985D-0579135584CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3E9BAC1-9490-4E10-985D-0579135584CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3E9BAC1-9490-4E10-985D-0579135584CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3E9BAC1-9490-4E10-985D-0579135584CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13B63C4C-2094-43C8-8248-120CBA832DF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13B63C4C-2094-43C8-8248-120CBA832DF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13B63C4C-2094-43C8-8248-120CBA832DF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13B63C4C-2094-43C8-8248-120CBA832DF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{683991E2-E3B6-439F-AE8E-E6B6D1F1A94C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{683991E2-E3B6-439F-AE8E-E6B6D1F1A94C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{683991E2-E3B6-439F-AE8E-E6B6D1F1A94C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{683991E2-E3B6-439F-AE8E-E6B6D1F1A94C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F53AEA55-3BE9-4318-A929-49DEC15125B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F53AEA55-3BE9-4318-A929-49DEC15125B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F53AEA55-3BE9-4318-A929-49DEC15125B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F53AEA55-3BE9-4318-A929-49DEC15125B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8601A6B-5131-47E5-BA4A-92B1A3887814}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8601A6B-5131-47E5-BA4A-92B1A3887814}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8601A6B-5131-47E5-BA4A-92B1A3887814}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8601A6B-5131-47E5-BA4A-92B1A3887814}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{A9E1F365-78F7-4769-8A62-CE981845CDC2} = {B714D8C4-FFC2-4BCB-8D27-6F59C226325C}
 		{A39ECDE9-44C8-4F97-9E67-32298FA5F8AF} = {B714D8C4-FFC2-4BCB-8D27-6F59C226325C}
-		{F8D49960-DF3E-4009-A31E-1CCC6B80BFFE} = {B714D8C4-FFC2-4BCB-8D27-6F59C226325C}
 		{915BBECD-F401-4946-9193-469DF558C279} = {E0213D70-FC8A-4C45-987B-96699CC94FE1}
-		{51FB4DAF-8590-4941-960A-777CA2010800} = {B714D8C4-FFC2-4BCB-8D27-6F59C226325C}
 		{DE667E06-4FBE-4A76-95D9-F766C7BF75FA} = {34FF11F9-D837-4177-BF7C-B5016B44DE4B}
+		{C3E9BAC1-9490-4E10-985D-0579135584CD} = {B714D8C4-FFC2-4BCB-8D27-6F59C226325C}
+		{13B63C4C-2094-43C8-8248-120CBA832DF0} = {B714D8C4-FFC2-4BCB-8D27-6F59C226325C}
+		{683991E2-E3B6-439F-AE8E-E6B6D1F1A94C} = {B714D8C4-FFC2-4BCB-8D27-6F59C226325C}
+		{F53AEA55-3BE9-4318-A929-49DEC15125B8} = {4C2F3E5A-55E2-4838-B21D-8CEC3404F146}
+		{A8601A6B-5131-47E5-BA4A-92B1A3887814} = {4C2F3E5A-55E2-4838-B21D-8CEC3404F146}
 	EndGlobalSection
 EndGlobal

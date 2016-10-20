@@ -1,11 +1,13 @@
-﻿{
+{
   "version": "1.0.0-*",
 
   "dependencies": {
-    
+    "RotaractCoders.Common": "1.0.0-*",
+    "DomainNotificationHelper": "1.0.1",
+    "DomainNotificationHelper.Validation": "1.0.3"
   },
 
   "frameworks": {
-    "dnx451": {}
+    "net452": {}
   }
 }

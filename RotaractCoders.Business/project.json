@@ -1,9 +1,8 @@
-{
+﻿{
   "version": "1.0.0-*",
 
   "dependencies": {
-    "RotaractCoders.Domain": "1.0.0-*",
-    "RotaractCoders.Infraestructure": "1.0.0-*"
+    "RotaractCoders.Domain": "1.0.0-*"
   },
 
   "frameworks": {
