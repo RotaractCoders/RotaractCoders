@@ -154,6 +154,7 @@ namespace RotaractCoders.Infraestructure.Test.API.Repository.OmirBrasilRepositor
                 {
                     Assert.Equal(project.ProjectFinancials[i].Description, result.ProjectFinancials[i].Description);
                     Assert.Equal(project.ProjectFinancials[i].Date, result.ProjectFinancials[i].Date);
+                    Assert.Equal(project.ProjectFinancials[i].Value, result.ProjectFinancials[i].Value);
                 }
             }
         }

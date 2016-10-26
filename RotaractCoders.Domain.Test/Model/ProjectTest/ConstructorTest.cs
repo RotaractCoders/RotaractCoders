@@ -30,11 +30,11 @@ namespace RotaractCoders.Domain.Test.Model.ProjectTest
                 },
                 new List<EnumProjectCategory>
                 {
-                    EnumProjectCategory.Community
+                    EnumProjectCategory.Comunidade
                 },
                 new List<EnumProjectCategory>
                 {
-                    EnumProjectCategory.Finances
+                    EnumProjectCategory.Finanças
                 },
                 new DateTime(2016, 09, 18),
                 new DateTime(2016, 10, 01),
@@ -49,9 +49,9 @@ namespace RotaractCoders.Domain.Test.Model.ProjectTest
                 },
                 new List<EnumParticipant>
                 {
-                    EnumParticipant.Rotaract,
-                    EnumParticipant.Rotary,
-                    EnumParticipant.OtherVoluntaries
+                    EnumParticipant.Rotaractianos,
+                    EnumParticipant.Rotarianos,
+                    EnumParticipant.VoluntariosAdicionais
                 },
                 "até 12 anos",
                 new List<string>
@@ -71,7 +71,7 @@ namespace RotaractCoders.Domain.Test.Model.ProjectTest
                 },
                 "Com o projeto já planejado, comidas, bebidas e medalhas já adquiridas, o evento que foi realizado na quadra de uma praça em um bairro carente da nossa cidade, tendo inicio as 13:30 com o cadastro dos times com base sub 11 e sub 13. Durante a tarde foram distribuídos cachorro quente, sacolés, pipoca e refrigerante para as crianças e no fim do campeonato, medalhas foram entregues aos vencedores. O evento teve termino as 18:00",
                 "Tivemos um excelente resultado, pois através deste projeto tivemos uma maior aproximação do clube com a comunidade, além de fazer parcerias com rotarianos e a secretaria de esporte da nossa cidade. O projetos teve grandes resultados e melhorias.",
-                EnumDifficulty.Easy,
+                EnumDifficulty.Baixa,
                 "Futebol, crianças, torneio",
                 "O 4º Futebol Solidario, , teve com objetivo incentivar a prática de esportes em crianças e a arrecadação de recursos para projetos futuros. O torneio contou com a participação de cinquenta (50) crianças da nossa comunidade, que além da prática do esporte receberam lanche e premiações ao final do campeonato.");
 

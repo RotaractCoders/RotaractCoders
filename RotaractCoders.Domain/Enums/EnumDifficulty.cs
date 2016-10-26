@@ -7,6 +7,6 @@ namespace RotaractCoders.Domain.Enums
 {
     public enum EnumDifficulty
     {
-        Easy
+        Baixa
     }
 }

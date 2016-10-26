@@ -26,34 +26,34 @@ namespace RotaractCoders.Infraestructure.Test.API.Repository
                 },
                 new List<EnumProjectCategory>
                 {
-                    EnumProjectCategory.Community
+                    EnumProjectCategory.Comunidade
                 },
                 new List<EnumProjectCategory>
                 {
-                    EnumProjectCategory.Finances
+                    EnumProjectCategory.Finanças
                 },
                 new DateTime(2016, 09, 18),
                 new DateTime(2016, 10, 01),
                 null,
                 new List<ProjectFinancial>
                 {
-                    new ProjectFinancial(new DateTime(2016,09,18), "Lançamento da proposta e aprovação do projeto", 0),
-                    new ProjectFinancial(new DateTime(2016,09,22), "Medalhas", 0),
-                    new ProjectFinancial(new DateTime(2016,09,26), "Cachorro Quente", 0),
-                    new ProjectFinancial(new DateTime(2016,09,27), "Refrigerante", 0),
-                    new ProjectFinancial(new DateTime(2016,09,28), "Guardanapos, copos etc", 0)
+                    new ProjectFinancial(new DateTime(2016,9,18), "Lançamento da proposta e aprovação do projeto", 0),
+                    new ProjectFinancial(new DateTime(2016,9,22), "Medalhas", 0),
+                    new ProjectFinancial(new DateTime(2016,9,26), "Cachorro Quente", 0),
+                    new ProjectFinancial(new DateTime(2016,9,27), "Refrigerante", 0),
+                    new ProjectFinancial(new DateTime(2016,10,28), "Guardanapos, copos etc", 0)
                 },
                 new List<EnumParticipant>
                 {
-                    EnumParticipant.Rotaract,
-                    EnumParticipant.Rotary,
-                    EnumParticipant.OtherVoluntaries
+                    EnumParticipant.Rotaractianos,
+                    EnumParticipant.Rotarianos,
+                    EnumParticipant.VoluntariosAdicionais
                 },
                 "até 12 anos",
                 new List<string>
                 {
-                    "Facebook",
-                    "Jornal"
+                    "facebook",
+                    "jornal"
                 },
                 new List<string>
                 {
@@ -67,7 +67,7 @@ namespace RotaractCoders.Infraestructure.Test.API.Repository
                 },
                 "Com o projeto já planejado, comidas, bebidas e medalhas já adquiridas, o evento que foi realizado na quadra de uma praça em um bairro carente da nossa cidade, tendo inicio as 13:30 com o cadastro dos times com base sub 11 e sub 13. Durante a tarde foram distribuídos cachorro quente, sacolés, pipoca e refrigerante para as crianças e no fim do campeonato, medalhas foram entregues aos vencedores. O evento teve termino as 18:00",
                 "Tivemos um excelente resultado, pois através deste projeto tivemos uma maior aproximação do clube com a comunidade, além de fazer parcerias com rotarianos e a secretaria de esporte da nossa cidade. O projetos teve grandes resultados e melhorias.",
-                EnumDifficulty.Easy,
+                EnumDifficulty.Baixa,
                 "Futebol, crianças, torneio",
                 "O 4º Futebol Solidario, , teve com objetivo incentivar a prática de esportes em crianças e a arrecadação de recursos para projetos futuros. O torneio contou com a participação de cinquenta (50) crianças da nossa comunidade, que além da prática do esporte receberam lanche e premiações ao final do campeonato.");
         }

@@ -2,10 +2,11 @@
   "version": "1.0.0-*",
 
   "dependencies": {
-    "EntityFramework": "6.1.3",
+    "MongoCSharpDriver": "2.3.0",
     "Microsoft.EntityFrameworkCore": "1.0.1",
     "RotaractCoders.Domain": "1.0.0-*",
-    "AngleSharp": "0.9.9"
+    "AngleSharp": "0.9.9",
+    "RotaractCoders.Common": "1.0.0-*"
   },
 
   "frameworks": {

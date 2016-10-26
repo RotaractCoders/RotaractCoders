@@ -2,7 +2,7 @@
 {
     public enum EnumProjectCategory
     {
-        Community = 1,
-        Finances = 2
+        Comunidade,
+        Finanças
     }
 }
