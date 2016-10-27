@@ -5,6 +5,7 @@
     "xunit": "2.2.0-beta2-build3300",
     "RotaractCoders.Infraestructure": "1.0.0-*",
     "RotaractCoders.Domain": "1.0.0-*",
+    "RotaractCoders.Test.Common": "1.0.0-*",
     "dotnet-test-xunit": "2.2.0-preview2-build1029"
   },
 

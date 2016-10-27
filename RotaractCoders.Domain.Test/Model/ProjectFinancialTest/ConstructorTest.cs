@@ -1,8 +1,5 @@
-﻿using RotaractCoders.Domain.Model;
+﻿using RotaractCoders.Domain.ProjetosSociais.Entities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace RotaractCoders.Domain.Test.Model.ProjectFinancialTest
@@ -12,15 +9,15 @@ namespace RotaractCoders.Domain.Test.Model.ProjectFinancialTest
         [Fact]
         public void Success()
         {
-            var projectFinancial = new ProjectFinancial(DateTime.Now, "teste", 6.98m);
-            Assert.True(projectFinancial.IsValid());
+            var projectFinancial = new Financas(DateTime.Now, "teste", 6.98m);
+            Assert.True(projectFinancial.Valido());
         }
 
         [Fact]
-        public void Error_DescriptionEmpty()
+        public void Error_Descricao_Em_Branco()
         {
-            var projectFinancial = new ProjectFinancial(DateTime.Now, "", 6.98m);
-            Assert.False(projectFinancial.IsValid());
+            var projectFinancial = new Financas(DateTime.Now, "", 6.98m);
+            Assert.False(projectFinancial.Valido());
         }
     }
 }

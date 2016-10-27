@@ -29,6 +29,8 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "RotaractCoders.Infraestruct
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "RotaractCoders.Domain.Test", "RotaractCoders.Domain.Test\RotaractCoders.Domain.Test.xproj", "{A8601A6B-5131-47E5-BA4A-92B1A3887814}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "RotaractCoders.Test.Common", "RotaractCoders.Test.Common\RotaractCoders.Test.Common.xproj", "{C5A797A9-2EB7-4900-B503-3F8895BD2F66}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,10 @@ Global
 		{A8601A6B-5131-47E5-BA4A-92B1A3887814}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8601A6B-5131-47E5-BA4A-92B1A3887814}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8601A6B-5131-47E5-BA4A-92B1A3887814}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5A797A9-2EB7-4900-B503-3F8895BD2F66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5A797A9-2EB7-4900-B503-3F8895BD2F66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5A797A9-2EB7-4900-B503-3F8895BD2F66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5A797A9-2EB7-4900-B503-3F8895BD2F66}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -84,5 +90,6 @@ Global
 		{683991E2-E3B6-439F-AE8E-E6B6D1F1A94C} = {B714D8C4-FFC2-4BCB-8D27-6F59C226325C}
 		{F53AEA55-3BE9-4318-A929-49DEC15125B8} = {4C2F3E5A-55E2-4838-B21D-8CEC3404F146}
 		{A8601A6B-5131-47E5-BA4A-92B1A3887814} = {4C2F3E5A-55E2-4838-B21D-8CEC3404F146}
+		{C5A797A9-2EB7-4900-B503-3F8895BD2F66} = {4C2F3E5A-55E2-4838-B21D-8CEC3404F146}
 	EndGlobalSection
 EndGlobal

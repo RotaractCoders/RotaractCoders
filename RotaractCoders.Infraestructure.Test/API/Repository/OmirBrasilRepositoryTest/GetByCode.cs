@@ -1,19 +1,17 @@
-﻿using RotaractCoders.Domain.Enums;
-using RotaractCoders.Domain.Model;
+﻿using RotaractCoders.Domain.ProjetosSociais.Entities;
 using RotaractCoders.Infraestructure.WebCroley.Repository;
-using System;
-using System.Collections.Generic;
+using RotaractCoders.Test.Common.ProjetosSociais.Mock;
 using Xunit;
 
-namespace RotaractCoders.Infraestructure.Test.API.Repository.OmirBrasilRepositoryTest
+namespace RotaractCodigors.Infraestructure.Test.API.Repository.OmirBrasilRepositoryTest
 {
-    public class GetByCode : RepositoryBase
+    public class GetByCode
     {
-        private Project project;
+        private readonly Projeto projeto;
 
         public GetByCode()
         {
-            project = GetDefaultProject();
+            projeto = ProjetoMock.Projeto_10289;
         }
 
         [Fact]
@@ -21,257 +19,257 @@ namespace RotaractCoders.Infraestructure.Test.API.Repository.OmirBrasilRepositor
         {
             using (var omirBrasilRepository = new OmirBrasilRepository())
             {
-                var result = omirBrasilRepository.GetByCode(project.Code);
+                var result = omirBrasilRepository.GetByCode(projeto.Codigo);
 
-                Assert.True(result.IsValid());
+                Assert.True(result.Valido());
             }
         }
 
         [Fact]
-        public void Success_Name()
+        public void Success_Nome()
         {
             using (var omirBrasilRepository = new OmirBrasilRepository())
             {
-                var result = omirBrasilRepository.GetByCode(project.Code);
+                var result = omirBrasilRepository.GetByCode(projeto.Codigo);
 
-                Assert.Equal(project.Name, result.Name);
+                Assert.Equal(projeto.Nome, result.Nome);
             }
         }
 
         [Fact]
-        public void Success_Club()
+        public void Success_Clube()
         {
             using (var omirBrasilRepository = new OmirBrasilRepository())
             {
-                var result = omirBrasilRepository.GetByCode(project.Code);
+                var result = omirBrasilRepository.GetByCode(projeto.Codigo);
 
-                Assert.Equal(project.Club.Name, result.Club.Name);
-                Assert.Equal(project.Club.Code, result.Club.Code);
-                Assert.Equal(project.Club.Email, result.Club.Email);
-                Assert.Equal(project.Club.Facebook, result.Club.Facebook);
-                Assert.Equal(project.Club.District.Number, result.Club.District.Number);
+                Assert.Equal(projeto.Clube.Nome, result.Clube.Nome);
+                Assert.Equal(projeto.Clube.Codigo, result.Clube.Codigo);
+                Assert.Equal(projeto.Clube.Email, result.Clube.Email);
+                Assert.Equal(projeto.Clube.Facebook, result.Clube.Facebook);
+                Assert.Equal(projeto.Clube.Distrito.Numero, result.Clube.Distrito.Numero);
             }
         }
 
         [Fact]
-        public void Success_Rationale()
+        public void Success_Justificativa()
         {
             using (var omirBrasilRepository = new OmirBrasilRepository())
             {
-                var result = omirBrasilRepository.GetByCode(project.Code);
+                var result = omirBrasilRepository.GetByCode(projeto.Codigo);
 
-                Assert.Equal(project.Rationale, result.Rationale);
+                Assert.Equal(projeto.Justificativa, result.Justificativa);
             }
         }
 
         [Fact]
-        public void Success_GeneralObjective()
+        public void Success_ObjetivosGerais()
         {
             using (var omirBrasilRepository = new OmirBrasilRepository())
             {
-                var result = omirBrasilRepository.GetByCode(project.Code);
+                var result = omirBrasilRepository.GetByCode(projeto.Codigo);
 
-                Assert.Equal(project.GeneralObjective, result.GeneralObjective);
+                Assert.Equal(projeto.ObjetivosGerais, result.ObjetivosGerais);
             }
         }
 
         [Fact]
-        public void Success_SpecificObjective()
+        public void Success_ObjetivosEspecificos()
         {
             using (var omirBrasilRepository = new OmirBrasilRepository())
             {
-                var result = omirBrasilRepository.GetByCode(project.Code);
+                var result = omirBrasilRepository.GetByCode(projeto.Codigo);
 
-                Assert.Equal(project.SpecificObjective, result.SpecificObjective);
+                Assert.Equal(projeto.ObjetivosEspecificos, result.ObjetivosEspecificos);
             }
         }
 
         [Fact]
-        public void Success_MainCategory()
+        public void Success_CategoriasPrincipais()
         {
             using (var omirBrasilRepository = new OmirBrasilRepository())
             {
-                var result = omirBrasilRepository.GetByCode(project.Code);
+                var result = omirBrasilRepository.GetByCode(projeto.Codigo);
 
-                Assert.Equal(project.MainCategory, result.MainCategory);
+                Assert.Equal(projeto.CategoriasPrincipais, result.CategoriasPrincipais);
             }
         }
 
         [Fact]
-        public void Success_OtherCategories()
+        public void Success_CategoriasSecundarias()
         {
             using (var omirBrasilRepository = new OmirBrasilRepository())
             {
-                var result = omirBrasilRepository.GetByCode(project.Code);
+                var result = omirBrasilRepository.GetByCode(projeto.Codigo);
 
-                Assert.Equal(project.OtherCategories, result.OtherCategories);
+                Assert.Equal(projeto.CategoriasSecundarias, result.CategoriasSecundarias);
             }
         }
 
         [Fact]
-        public void Success_StartDate()
+        public void Success_DataInicio()
         {
             using (var omirBrasilRepository = new OmirBrasilRepository())
             {
-                var result = omirBrasilRepository.GetByCode(project.Code);
+                var result = omirBrasilRepository.GetByCode(projeto.Codigo);
 
-                Assert.Equal(project.StartDate, result.StartDate);
+                Assert.Equal(projeto.DataInicio, result.DataInicio);
             }
         }
 
         [Fact]
-        public void Success_EndDate()
+        public void Success_DataFim()
         {
             using (var omirBrasilRepository = new OmirBrasilRepository())
             {
-                var result = omirBrasilRepository.GetByCode(project.Code);
+                var result = omirBrasilRepository.GetByCode(projeto.Codigo);
 
-                Assert.Equal(project.EndDate, result.EndDate);
+                Assert.Equal(projeto.DataFim, result.DataFim);
             }
         }
 
         [Fact]
-        public void Success_CompletionDate()
+        public void Success_DataFinalizacao()
         {
             using (var omirBrasilRepository = new OmirBrasilRepository())
             {
-                var result = omirBrasilRepository.GetByCode(project.Code);
+                var result = omirBrasilRepository.GetByCode(projeto.Codigo);
 
-                Assert.Equal(project.CompletionDate, result.CompletionDate);
+                Assert.Equal(projeto.DataFinalizacao, result.DataFinalizacao);
             }
         }
 
         [Fact]
-        public void Success_ProjectFinancials()
+        public void Success_RelatorioFinanceiro()
         {
             using (var omirBrasilRepository = new OmirBrasilRepository())
             {
-                var result = omirBrasilRepository.GetByCode(project.Code);
+                var result = omirBrasilRepository.GetByCode(projeto.Codigo);
 
-                Assert.Equal(project.ProjectFinancials.Count, result.ProjectFinancials.Count);
+                Assert.Equal(projeto.RelatorioFinanceiro.Quantidaderegistros, result.RelatorioFinanceiro.Quantidaderegistros);
 
-                for (int i = 0; i < result.ProjectFinancials.Count; i++)
+                for (int i = 0; i < result.RelatorioFinanceiro.Quantidaderegistros; i++)
                 {
-                    Assert.Equal(project.ProjectFinancials[i].Description, result.ProjectFinancials[i].Description);
-                    Assert.Equal(project.ProjectFinancials[i].Date, result.ProjectFinancials[i].Date);
-                    Assert.Equal(project.ProjectFinancials[i].Value, result.ProjectFinancials[i].Value);
+                    Assert.Equal(projeto.RelatorioFinanceiro[i].Descricao, result.RelatorioFinanceiro[i].Descricao);
+                    Assert.Equal(projeto.RelatorioFinanceiro[i].Data, result.RelatorioFinanceiro[i].Data);
+                    Assert.Equal(projeto.RelatorioFinanceiro[i].Valor, result.RelatorioFinanceiro[i].Valor);
                 }
             }
         }
 
         [Fact]
-        public void Success_Participants()
+        public void Success_Participantes()
         {
             using (var omirBrasilRepository = new OmirBrasilRepository())
             {
-                var result = omirBrasilRepository.GetByCode(project.Code);
+                var result = omirBrasilRepository.GetByCode(projeto.Codigo);
 
-                Assert.Equal(project.Participants, result.Participants);
+                Assert.Equal(projeto.Participantes, result.Participantes);
             }
         }
 
         [Fact]
-        public void Success_TargetAudience()
+        public void Success_PublicoAlvo()
         {
             using (var omirBrasilRepository = new OmirBrasilRepository())
             {
-                var result = omirBrasilRepository.GetByCode(project.Code);
+                var result = omirBrasilRepository.GetByCode(projeto.Codigo);
 
-                Assert.Equal(project.TargetAudience, result.TargetAudience);
+                Assert.Equal(projeto.PublicoAlvo, result.PublicoAlvo);
             }
         }
 
         [Fact]
-        public void Success_DisclosureMeans()
+        public void Success_MeiosDeDivulgacao()
         {
             using (var omirBrasilRepository = new OmirBrasilRepository())
             {
-                var result = omirBrasilRepository.GetByCode(project.Code);
+                var result = omirBrasilRepository.GetByCode(projeto.Codigo);
 
-                Assert.Equal(project.DisclosureMeans, result.DisclosureMeans);
+                Assert.Equal(projeto.MeiosDeDivulgacao, result.MeiosDeDivulgacao);
             }
         }
 
         [Fact]
-        public void Success_Partnerships()
+        public void Success_Parcerias()
         {
             using (var omirBrasilRepository = new OmirBrasilRepository())
             {
-                var result = omirBrasilRepository.GetByCode(project.Code);
+                var result = omirBrasilRepository.GetByCode(projeto.Codigo);
 
-                Assert.Equal(project.Partnerships, result.Partnerships);
+                Assert.Equal(projeto.Parcerias, result.Parcerias);
             }
         }
 
         [Fact]
-        public void Success_Schedule()
+        public void Success_Cronograma()
         {
             using (var omirBrasilRepository = new OmirBrasilRepository())
             {
-                var result = omirBrasilRepository.GetByCode(project.Code);
+                var result = omirBrasilRepository.GetByCode(projeto.Codigo);
 
-                Assert.Equal(project.Schedule.Count, result.Schedule.Count);
+                Assert.Equal(projeto.Cronograma.QuantidadeDeAtividades, result.Cronograma.QuantidadeDeAtividades);
 
-                for (int i = 0; i < result.Schedule.Count; i++)
+                for (int i = 0; i < result.Cronograma.QuantidadeDeAtividades; i++)
                 {
-                    Assert.Equal(result.Schedule[i].Date, project.Schedule[i].Date);
-                    Assert.Equal(result.Schedule[i].Description, project.Schedule[i].Description);
+                    Assert.Equal(result.Cronograma[i].Data, projeto.Cronograma[i].Data);
+                    Assert.Equal(result.Cronograma[i].Descricao, projeto.Cronograma[i].Descricao);
                 }
             }
         }
 
         [Fact]
-        public void Success_Description()
+        public void Success_Descricao()
         {
             using (var omirBrasilRepository = new OmirBrasilRepository())
             {
-                var result = omirBrasilRepository.GetByCode(project.Code);
+                var result = omirBrasilRepository.GetByCode(projeto.Codigo);
 
-                Assert.Equal(project.Description, result.Description);
+                Assert.Equal(projeto.Descricao, result.Descricao);
             }
         }
 
         [Fact]
-        public void Success_Results()
+        public void Success_Resultados()
         {
             using (var omirBrasilRepository = new OmirBrasilRepository())
             {
-                var result = omirBrasilRepository.GetByCode(project.Code);
+                var result = omirBrasilRepository.GetByCode(projeto.Codigo);
 
-                Assert.Equal(project.Results, result.Results);
+                Assert.Equal(projeto.Resultados, result.Resultados);
             }
         }
 
         [Fact]
-        public void Success_Difficulty()
+        public void Success_Dificuldade()
         {
             using (var omirBrasilRepository = new OmirBrasilRepository())
             {
-                var result = omirBrasilRepository.GetByCode(project.Code);
+                var result = omirBrasilRepository.GetByCode(projeto.Codigo);
 
-                Assert.Equal(project.Difficulty, result.Difficulty);
+                Assert.Equal(projeto.Dificuldade, result.Dificuldade);
             }
         }
 
         [Fact]
-        public void Success_KeyWords()
+        public void Success_PalavraChave()
         {
             using (var omirBrasilRepository = new OmirBrasilRepository())
             {
-                var result = omirBrasilRepository.GetByCode(project.Code);
+                var result = omirBrasilRepository.GetByCode(projeto.Codigo);
 
-                Assert.Equal(project.KeyWords, result.KeyWords);
+                Assert.Equal(projeto.PalavraChave, result.PalavraChave);
             }
         }
 
         [Fact]
-        public void Success_Summary()
+        public void Success_Resumo()
         {
             using (var omirBrasilRepository = new OmirBrasilRepository())
             {
-                var result = omirBrasilRepository.GetByCode(project.Code);
+                var result = omirBrasilRepository.GetByCode(projeto.Codigo);
 
-                Assert.Equal(project.Summary, result.Summary);
+                Assert.Equal(projeto.Resumo, result.Resumo);
             }
         }
     }

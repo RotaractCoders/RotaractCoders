@@ -1,40 +1,40 @@
-﻿using RotaractCoders.Domain.Model;
+﻿using RotaractCoders.Domain.ProjetosSociais.Entities;
 using Xunit;
 
-namespace RotaractCoders.Domain.Test.Model.DistrictTest
+namespace RotaractCoders.Domain.Test.Model.distritoTest
 {
     public class ConstructorTest
     {
         [Fact]
         public void Success()
         {
-            var district = new District("4430");
+            var distrito = new Distrito("4430");
 
-            Assert.True(district.IsValid());
+            Assert.True(distrito.Valido());
         }
 
         [Fact]
         public void Error_NumberEmpty()
         {
-            var district = new District("");
+            var distrito = new Distrito("");
 
-            Assert.False(district.IsValid());
+            Assert.False(distrito.Valido());
         }
 
         [Fact]
         public void Error_NumberLength3()
         {
-            var district = new District("443");
+            var distrito = new Distrito("443");
 
-            Assert.False(district.IsValid());
+            Assert.False(distrito.Valido());
         }
 
         [Fact]
         public void Error_NumberLength5()
         {
-            var district = new District("44333");
+            var distrito = new Distrito("44333");
 
-            Assert.False(district.IsValid());
+            Assert.False(distrito.Valido());
         }
     }
 }

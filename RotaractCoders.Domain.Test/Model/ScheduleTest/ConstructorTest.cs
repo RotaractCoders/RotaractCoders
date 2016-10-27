@@ -1,8 +1,5 @@
-﻿using RotaractCoders.Domain.Model;
+﻿using RotaractCoders.Domain.ProjetosSociais.Entities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace RotaractCoders.Domain.Test.Model.ScheduleTest
@@ -12,8 +9,8 @@ namespace RotaractCoders.Domain.Test.Model.ScheduleTest
         [Fact]
         public void Success()
         {
-            var shadule = new Schedule(DateTime.Now, "Teste");
-            Assert.True(shadule.IsValid());
+            var atividade = new Atividade(DateTime.Now, "Teste");
+            Assert.True(atividade.Valido());
         }
     }
 }

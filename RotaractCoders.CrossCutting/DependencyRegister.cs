@@ -1,5 +1,5 @@
 ﻿using Microsoft.Practices.Unity;
-using RotaractCoders.Domain.Contracts.Infraestructure.API.Repository;
+using RotaractCoders.Domain.ProjetosSociais.Contracts.Infraestructure.API.Repository;
 using RotaractCoders.Infraestructure.WebCroley.Repository;
 
 namespace RotaractCoders.CrossCutting

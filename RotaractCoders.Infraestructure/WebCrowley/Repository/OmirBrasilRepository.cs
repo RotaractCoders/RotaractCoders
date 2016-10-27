@@ -1,9 +1,8 @@
 ﻿using AngleSharp;
 using AngleSharp.Dom;
-using RotaractCoders.Common;
-using RotaractCoders.Domain.Contracts.Infraestructure.API.Repository;
-using RotaractCoders.Domain.Enums;
-using RotaractCoders.Domain.Model;
+using RotaractCoders.Domain.ProjetosSociais.Contracts.Infraestructure.API.Repository;
+using RotaractCoders.Domain.ProjetosSociais.Entities;
+using RotaractCoders.Domain.ProjetosSociais.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +19,7 @@ namespace RotaractCoders.Infraestructure.WebCroley.Repository
             config = Configuration.Default.WithDefaultLoader();
         }
 
-        public Project GetByCode(int code)
+        public Projeto GetByCode(int code)
         {
             var omirBrasilUrl = $"http://projetos.omirbrasil.org.br/exibe_projetos.php?ID_PROJETO={code}";
 
@@ -31,16 +30,16 @@ namespace RotaractCoders.Infraestructure.WebCroley.Repository
 
             var simpleFields = tableTr.Where(x => x.QuerySelectorAll("b").Length > 0).ToList();
 
-            var district = new District(GetDistrictNumber(title));
+            var district = new Distrito(GetDistrictNumber(title));
 
-            var club = new Club(
+            var club = new Clube(
                 GetClubCode(document),
                 GetClubName(title),
                 GetClubFacebook(simpleFields),
                 GetClubEmail(simpleFields),
                 district);
 
-            var project = new Project(
+            var project = new Projeto(
                 code,
                 club,
                 GetProjectName(title),
@@ -85,12 +84,12 @@ namespace RotaractCoders.Infraestructure.WebCroley.Repository
             return GetValueOfSimpleField(listFields, "Palavras-Chave");
         }
 
-        private static EnumDifficulty GetProjectDifficulty(List<IElement> listFields)
+        private static Dificuldade GetProjectDifficulty(List<IElement> listFields)
         {
             var difficulty = GetValueOfSimpleField(listFields, "Grau de Dificuldade")
                 .ToLower();
 
-            return (EnumDifficulty)Enum.Parse(typeof(EnumDifficulty), difficulty , true);
+            return (Dificuldade)Enum.Parse(typeof(Dificuldade), difficulty , true);
         }
 
         private static string GetProjectResults(List<IElement> listFields)
@@ -105,7 +104,7 @@ namespace RotaractCoders.Infraestructure.WebCroley.Repository
                 .FirstOrDefault();
         }
 
-        private static List<Schedule> GetProjectSchedule(List<IElement> listFields)
+        private static Cronograma GetProjectSchedule(List<IElement> listFields)
         {
             var element = listFields
                 .FirstOrDefault(x => x.QuerySelector("b")
@@ -114,9 +113,9 @@ namespace RotaractCoders.Infraestructure.WebCroley.Repository
                 .NextElementSibling
                 .QuerySelectorAll("tr");
 
-            return element
-                .Select(x => new Schedule(Convert.ToDateTime(x.Children[0].TextContent), x.Children[1].TextContent.Trim()))
-                .ToList();
+            return new Cronograma(element
+                .Select(x => new Atividade(Convert.ToDateTime(x.Children[0].TextContent), x.Children[1].TextContent.Trim()))
+                .ToList());
         }
 
         private static List<string> GetProjectPartnerships(List<IElement> listFields)
@@ -137,7 +136,7 @@ namespace RotaractCoders.Infraestructure.WebCroley.Repository
             return GetValueOfSimpleField(listFields, "Público Alvo");
         }
 
-        private static List<EnumParticipant> GetProjectParticipants(List<IElement> listFields)
+        private static List<Participante> GetProjectParticipants(List<IElement> listFields)
         {
             var result = GetValueOfSimpleField(listFields, "Quem trabalho no Projeto | Ação")
                 .Split(new[] { "00" }, StringSplitOptions.None)
@@ -148,11 +147,11 @@ namespace RotaractCoders.Infraestructure.WebCroley.Repository
                     .Trim());
 
             return result
-                .Select(x => (EnumParticipant)Enum.Parse(typeof(EnumParticipant), x.Replace(" ", string.Empty).Replace("á", "a"), true))
+                .Select(x => (Participante)Enum.Parse(typeof(Participante), x.Replace(" ", string.Empty).Replace("á", "a"), true))
                 .ToList();
         }
 
-        private static List<ProjectFinancial> GetProjectProjectFinancials(List<IElement> listFields)
+        private static RelatorioFinanceiro GetProjectProjectFinancials(List<IElement> listFields)
         {
             var element = listFields
                 .FirstOrDefault(x => x.QuerySelector("b")
@@ -161,11 +160,11 @@ namespace RotaractCoders.Infraestructure.WebCroley.Repository
                 .NextElementSibling
                 .QuerySelectorAll("tr");
 
-            var result = new List<ProjectFinancial>();
+            var result = new RelatorioFinanceiro();
 
             for (int i = 0; i < element.Count() - 1; i++)
             {
-                result.Add(new ProjectFinancial(Convert.ToDateTime(element[i].Children[0].TextContent), element[i].Children[1].TextContent.Trim(), Convert.ToDecimal(element[i].Children[2].TextContent.Trim().Replace(",", "."))));
+                result.Add(new Financas(Convert.ToDateTime(element[i].Children[0].TextContent), element[i].Children[1].TextContent.Trim(), Convert.ToDecimal(element[i].Children[2].TextContent.Trim().Replace(",", "."))));
             }
 
             return result;
@@ -191,23 +190,23 @@ namespace RotaractCoders.Infraestructure.WebCroley.Repository
             return DateTime.Parse(GetValueOfSimpleField(listFields, "Data Início"));
         }
 
-        private static List<EnumProjectCategory> GetProjectOtherCategories(List<IElement> listFields)
+        private static List<Categoria> GetProjectOtherCategories(List<IElement> listFields)
         {
             var category = GetValueOfSimpleField(listFields, "Outras Categorias");
 
-            return new List<EnumProjectCategory>
+            return new List<Categoria>
             {
-                (EnumProjectCategory)Enum.Parse(typeof(EnumProjectCategory), category, true)
+                (Categoria)Enum.Parse(typeof(Categoria), category, true)
             };
         }
 
-        private static List<EnumProjectCategory> GetProjectMainCategory(List<IElement> listFields)
+        private static List<Categoria> GetProjectMainCategory(List<IElement> listFields)
         {
             var category = GetValueOfSimpleField(listFields, "Categoria Principal");
 
-            return new List<EnumProjectCategory>
+            return new List<Categoria>
             {
-                (EnumProjectCategory)Enum.Parse(typeof(EnumProjectCategory), category, true)
+                (Categoria)Enum.Parse(typeof(Categoria), category, true)
             };
         }
 
