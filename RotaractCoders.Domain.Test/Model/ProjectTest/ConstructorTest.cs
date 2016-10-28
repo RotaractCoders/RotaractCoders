@@ -1,8 +1,4 @@
-﻿using RotaractCoders.Domain.ProjetosSociais.Entities;
-using RotaractCoders.Domain.ProjetosSociais.Enums;
-using RotaractCoders.Test.Common.ProjetosSociais.Mock;
-using System;
-using System.Collections.Generic;
+﻿using RotaractCoders.Test.Common.ProjetosSociais.Mock;
 using Xunit;
 
 namespace RotaractCoders.Domain.Test.Model.ProjectTest

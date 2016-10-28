@@ -7,5 +7,6 @@ namespace RotaractCoders.Infraestructure.Data.Repository
 {
     public class ProjetoRepository
     {
+
     }
 }

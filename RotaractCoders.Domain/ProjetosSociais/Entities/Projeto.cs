@@ -1,4 +1,4 @@
-﻿using RotaractCoders.Domain.ProjetosSociais.Enums;
+﻿using RotaractCoders.Domain.ProjetosSociais.Commands.ProjetoCommands;
 using RotaractCoders.Domain.ProjetosSociais.Scopes;
 using System;
 using System.Collections.Generic;
@@ -9,53 +9,34 @@ namespace RotaractCoders.Domain.ProjetosSociais.Entities
     {
         #region Construtores
 
-        public Projeto(
-            int codigo,
-            Clube clube,
-            string nome,
-            string justificativa,
-            List<string> objetivosGerais,
-            List<string> objetivosEspecificos,
-            List<Categoria> categoriasPrincipais,
-            List<Categoria> categoriasSecundarias,
-            DateTime dataInicio,
-            DateTime dataFim,
-            DateTime? dataFinalizacao,
-            RelatorioFinanceiro relatorioFinanceiro,
-            List<Participante> participantes,
-            string publicoAlvo,
-            List<string> meiosDeDivulgacao,
-            List<string> parcerias,
-            Cronograma cronograma,
-            string descricao,
-            string resultados,
-            Dificuldade dificuldade,
-            string palavraChave,
-            string resumo)
+        public Projeto (NovoProjetoCommand command)
         {
             Id = Guid.NewGuid();
-            Codigo = codigo;
-            Clube = clube;
-            Nome = nome;
-            Justificativa = justificativa;
-            ObjetivosGerais = objetivosGerais;
-            ObjetivosEspecificos = objetivosEspecificos;
-            CategoriasPrincipais = categoriasPrincipais;
-            CategoriasSecundarias = categoriasSecundarias;
-            DataInicio = dataInicio;
-            DataFim = dataFim;
-            DataFinalizacao = dataFinalizacao;
-            RelatorioFinanceiro = relatorioFinanceiro;
-            Participantes = participantes;
-            PublicoAlvo = publicoAlvo;
-            MeiosDeDivulgacao = meiosDeDivulgacao;
-            Parcerias = parcerias;
-            Cronograma = cronograma;
-            Descricao = descricao;
-            Resultados = resultados;
-            Dificuldade = dificuldade;
-            PalavraChave = palavraChave;
-            Resumo = resumo;
+            Codigo = command.Codigo;
+            DataUltimaAtualizacao = command.DataUltimaAtualizacao;
+            Clube = command.Clube;
+            Nome = command.Nome;
+            Justificativa = command.Justificativa ?? string.Empty;
+            ObjetivosGerais = command.ObjetivosGerais??new List<string>();
+            ObjetivosEspecificos = command.ObjetivosEspecificos ?? new List<string>();
+            CategoriasPrincipais = command.CategoriasPrincipais ?? new List<string>();
+            CategoriasSecundarias = command.CategoriasSecundarias ?? new List<string>();
+            DataInicio = command.DataInicio;
+            DataFim = command.DataFim;
+            DataFinalizacao = command.DataFinalizacao;
+            RelatorioFinanceiro = command.RelatorioFinanceiro ?? new RelatorioFinanceiro();
+            Participantes = command.Participantes ?? new List<string>();
+            PublicoAlvo = command.PublicoAlvo ?? new List<string>();
+            MeiosDeDivulgacao = command.MeiosDeDivulgacao ?? new List<string>();
+            Parcerias = command.Parcerias ?? new List<string>();
+            Cronograma = command.Cronograma ?? new Cronograma();
+            Descricao = command.Descricao ?? string.Empty;
+            Fotos = command.Fotos??string.Empty;
+            Resultados = command.Resultados ?? string.Empty;
+            Dificuldade = command.Dificuldade ?? string.Empty;
+            PalavraChave = command.PalavraChave ?? string.Empty;
+            LicoesAprendidas = command.LicoesAprendidas ?? string.Empty;
+            Resumo = command.Resumo ?? string.Empty;
         }
 
         #endregion
@@ -66,6 +47,8 @@ namespace RotaractCoders.Domain.ProjetosSociais.Entities
 
         public int Codigo { get; private set; }
 
+        public DateTime DataUltimaAtualizacao { get; private set; }
+
         public string Nome { get; private set; }
 
         public string Justificativa { get; private set; }
@@ -74,9 +57,9 @@ namespace RotaractCoders.Domain.ProjetosSociais.Entities
 
         public List<string> ObjetivosEspecificos { get; private set; }
 
-        public List<Categoria> CategoriasPrincipais { get; private set; }
+        public List<string> CategoriasPrincipais { get; private set; }
 
-        public List<Categoria> CategoriasSecundarias { get; private set; }
+        public List<string> CategoriasSecundarias { get; private set; }
 
         public DateTime DataInicio { get; private set; }
 
@@ -86,9 +69,9 @@ namespace RotaractCoders.Domain.ProjetosSociais.Entities
 
         public RelatorioFinanceiro RelatorioFinanceiro { get; private set; }
 
-        public List<Participante> Participantes { get; private set; }
+        public List<string> Participantes { get; private set; }
 
-        public string PublicoAlvo { get; private set; }
+        public List<string> PublicoAlvo { get; private set; }
 
         public List<string> MeiosDeDivulgacao { get; private set; }
 
@@ -98,11 +81,15 @@ namespace RotaractCoders.Domain.ProjetosSociais.Entities
 
         public string Descricao { get; private set; }
 
+        public string Fotos { get; private set; }
+
         public string Resultados { get; private set; }
 
-        public Dificuldade Dificuldade { get; private set; }
+        public string Dificuldade { get; private set; }
 
         public string PalavraChave { get; private set; }
+
+        public string LicoesAprendidas { get; private set; }
 
         public string Resumo { get; private set; }
 

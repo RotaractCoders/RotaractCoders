@@ -9,13 +9,11 @@ namespace RotaractCoders.Domain.ProjetosSociais.Entities
 
         protected Clube() { }
 
-        public Clube(int codigo, string nome, string facebook, string email, Distrito distrito)
+        public Clube(int codigo, string nome, Distrito distrito)
         {
             Id = Guid.NewGuid();
             Codigo = codigo;
             Nome = nome;
-            Facebook = facebook;
-            Email = email;
             Distrito = distrito;
         }
 
@@ -28,6 +26,8 @@ namespace RotaractCoders.Domain.ProjetosSociais.Entities
         public int Codigo { get; private set; }
 
         public string Nome { get; private set; }
+
+        public string Site { get; private set; }
 
         public string Facebook { get; private set; }
 

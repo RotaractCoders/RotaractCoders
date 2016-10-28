@@ -272,5 +272,38 @@ namespace RotaractCodigors.Infraestructure.Test.API.Repository.OmirBrasilReposit
                 Assert.Equal(projeto.Resumo, result.Resumo);
             }
         }
+
+        [Fact]
+        public void Success_Fotos()
+        {
+            using (var omirBrasilRepository = new OmirBrasilRepository())
+            {
+                var result = omirBrasilRepository.GetByCode(projeto.Codigo);
+
+                Assert.Equal(projeto.Fotos, result.Fotos);
+            }
+        }
+
+        [Fact]
+        public void Success_LicoesAprendidas()
+        {
+            using (var omirBrasilRepository = new OmirBrasilRepository())
+            {
+                var result = omirBrasilRepository.GetByCode(projeto.Codigo);
+
+                Assert.Equal(projeto.LicoesAprendidas, result.LicoesAprendidas);
+            }
+        }
+
+        [Fact]
+        public void Success_DataUltimaAtualizacao()
+        {
+            using (var omirBrasilRepository = new OmirBrasilRepository())
+            {
+                var result = omirBrasilRepository.GetByCode(projeto.Codigo);
+
+                Assert.Equal(projeto.DataUltimaAtualizacao, result.DataUltimaAtualizacao);
+            }
+        }
     }
 }

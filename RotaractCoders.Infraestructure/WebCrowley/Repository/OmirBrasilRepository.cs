@@ -1,8 +1,8 @@
 ﻿using AngleSharp;
 using AngleSharp.Dom;
+using RotaractCoders.Domain.ProjetosSociais.Commands.ProjetoCommands;
 using RotaractCoders.Domain.ProjetosSociais.Contracts.Infraestructure.API.Repository;
 using RotaractCoders.Domain.ProjetosSociais.Entities;
-using RotaractCoders.Domain.ProjetosSociais.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,33 +35,37 @@ namespace RotaractCoders.Infraestructure.WebCroley.Repository
             var club = new Clube(
                 GetClubCode(document),
                 GetClubName(title),
-                GetClubFacebook(simpleFields),
-                GetClubEmail(simpleFields),
                 district);
 
             var project = new Projeto(
-                code,
-                club,
-                GetProjectName(title),
-                GetProjectRationale(simpleFields),
-                GetProjectGeneralObjective(simpleFields),
-                GetProjectSpecificObjective(simpleFields),
-                GetProjectMainCategory(simpleFields),
-                GetProjectOtherCategories(simpleFields),
-                GetProjectStartDate(simpleFields),
-                GetProjectEndDate(simpleFields),
-                GetProjectCompletionDate(simpleFields),
-                GetProjectProjectFinancials(simpleFields),
-                GetProjectParticipants(simpleFields),
-                GetProjectTargetAudience(simpleFields),
-                GetProjectDisclosureMeans(simpleFields),
-                GetProjectPartnerships(simpleFields),
-                GetProjectSchedule(simpleFields),
-                GetProjectDescription(simpleFields),
-                GetProjectResults(simpleFields),
-                GetProjectDifficulty(simpleFields),
-                GetProjectKeyWords(simpleFields),
-                GetProjectSummary(simpleFields));
+                new NovoProjetoCommand
+                {
+                    Codigo = code,
+                    Clube = club,
+                    Nome = GetProjectName(title),
+                    Justificativa = GetProjectRationale(simpleFields),
+                    ObjetivosGerais = GetProjectGeneralObjective(simpleFields),
+                    ObjetivosEspecificos = GetProjectSpecificObjective(simpleFields),
+                    CategoriasPrincipais = GetProjectMainCategory(simpleFields),
+                    CategoriasSecundarias = GetProjectOtherCategories(simpleFields),
+                    DataInicio = GetProjectStartDate(simpleFields),
+                    DataFim = GetProjectEndDate(simpleFields),
+                    DataFinalizacao = GetProjectCompletionDate(simpleFields),
+                    RelatorioFinanceiro = GetProjectProjectFinancials(simpleFields),
+                    Participantes = GetProjectParticipants(simpleFields),
+                    PublicoAlvo = GetProjectTargetAudience(simpleFields),
+                    MeiosDeDivulgacao = ExtrairMeiosDeDivilgacao(simpleFields),
+                    Parcerias = GetProjectPartnerships(simpleFields),
+                    Cronograma = GetProjectSchedule(simpleFields),
+                    Descricao = GetProjectDescription(simpleFields),
+                    Resultados = GetProjectResults(simpleFields),
+                    Dificuldade = GetProjectDifficulty(simpleFields),
+                    PalavraChave = GetProjectKeyWords(simpleFields),
+                    Resumo = GetProjectSummary(simpleFields),
+                    DataUltimaAtualizacao = ExtrairDataUltimaAtualizacao(simpleFields),
+                    Fotos = ExtrairFoto(simpleFields),
+                    LicoesAprendidas = ExtrairLicoesAprendidas(simpleFields)
+                });
 
             return project;
         }
@@ -72,6 +76,22 @@ namespace RotaractCoders.Infraestructure.WebCroley.Repository
         }
 
         #region GetByCode - private methods
+
+        private static string ExtrairLicoesAprendidas(List<IElement> listFields)
+        {
+            return GetValueOfListFields(listFields, "Lições Aprendidas")
+                .FirstOrDefault();
+        }
+
+        private static string ExtrairFoto(List<IElement> listFields)
+        {
+            return GetValueOfSimpleField(listFields, "Fotos do Projeto");
+        }
+
+        private static DateTime ExtrairDataUltimaAtualizacao(List<IElement> simpleFields)
+        {
+            return Convert.ToDateTime(GetValueOfSimpleField(simpleFields, "Data Hora Cadastro / Alterado em"));
+        }
 
         private static string GetProjectSummary(List<IElement> listFields)
         {
@@ -84,12 +104,9 @@ namespace RotaractCoders.Infraestructure.WebCroley.Repository
             return GetValueOfSimpleField(listFields, "Palavras-Chave");
         }
 
-        private static Dificuldade GetProjectDifficulty(List<IElement> listFields)
+        private static string GetProjectDifficulty(List<IElement> listFields)
         {
-            var difficulty = GetValueOfSimpleField(listFields, "Grau de Dificuldade")
-                .ToLower();
-
-            return (Dificuldade)Enum.Parse(typeof(Dificuldade), difficulty , true);
+            return GetValueOfSimpleField(listFields, "Grau de Dificuldade");
         }
 
         private static string GetProjectResults(List<IElement> listFields)
@@ -123,31 +140,36 @@ namespace RotaractCoders.Infraestructure.WebCroley.Repository
             return GetValueOfListFields(listFields, "Parcerias");
         }
 
-        private static List<string> GetProjectDisclosureMeans(List<IElement> listFields)
+        private static List<string> ExtrairMeiosDeDivilgacao(List<IElement> listFields)
         {
             return GetValueOfListFields(listFields, "Meios de Divulgação")
-                .Select(x => x
-                    .Split(';')[0])
+                .Select(x => x.Split(';')[0].Trim())
                 .ToList();
         }
 
-        private static string GetProjectTargetAudience(List<IElement> listFields)
+        private static List<string> GetProjectTargetAudience(List<IElement> listFields)
         {
-            return GetValueOfSimpleField(listFields, "Público Alvo");
+            var result = GetValueOfSimpleField(listFields, "Público Alvo")
+                .Split('-')
+                .Where(x => x != string.Empty)
+                .Select(x => x
+                    //.Substring(x.IndexOf(' '))
+                    .Replace("-", string.Empty)
+                    .Trim());
+
+            return result
+                .ToList();
         }
 
-        private static List<Participante> GetProjectParticipants(List<IElement> listFields)
+        private static List<string> GetProjectParticipants(List<IElement> listFields)
         {
-            var result = GetValueOfSimpleField(listFields, "Quem trabalho no Projeto | Ação")
+            return GetValueOfSimpleField(listFields, "Quem trabalho no Projeto | Ação")
                 .Split(new[] { "00" }, StringSplitOptions.None)
                 .Where(x => x != string.Empty)
                 .Select(x => x
                     .Substring(x.IndexOf(' '))
                     .Replace("-", string.Empty)
-                    .Trim());
-
-            return result
-                .Select(x => (Participante)Enum.Parse(typeof(Participante), x.Replace(" ", string.Empty).Replace("á", "a"), true))
+                    .Trim())
                 .ToList();
         }
 
@@ -190,23 +212,23 @@ namespace RotaractCoders.Infraestructure.WebCroley.Repository
             return DateTime.Parse(GetValueOfSimpleField(listFields, "Data Início"));
         }
 
-        private static List<Categoria> GetProjectOtherCategories(List<IElement> listFields)
+        private static List<string> GetProjectOtherCategories(List<IElement> listFields)
         {
             var category = GetValueOfSimpleField(listFields, "Outras Categorias");
 
-            return new List<Categoria>
+            return new List<string>
             {
-                (Categoria)Enum.Parse(typeof(Categoria), category, true)
+                category
             };
         }
 
-        private static List<Categoria> GetProjectMainCategory(List<IElement> listFields)
+        private static List<string> GetProjectMainCategory(List<IElement> listFields)
         {
             var category = GetValueOfSimpleField(listFields, "Categoria Principal");
 
-            return new List<Categoria>
+            return new List<string>
             {
-                (Categoria)Enum.Parse(typeof(Categoria), category, true)
+                category
             };
         }
 
@@ -248,17 +270,13 @@ namespace RotaractCoders.Infraestructure.WebCroley.Repository
         private static int GetClubCode(IDocument document)
         {
             return int.Parse(document
-                            .QuerySelector("#projetoprincipal tr a")
-                            .Attributes
-                            .FirstOrDefault(x => x.Name == "href")
-                            .Value
-                            .Split('\'')[1]);
+                            .QuerySelectorAll("#projetoprincipal tr a")
+                            .FirstOrDefault(x => x.TextContent.Contains("Clique aqui para exibir a ficha completa do clube."))
+                            .Attributes.FirstOrDefault(x => x.Name == "href")
+                            .Value.Split('\'')[1]);
         }
 
-        private static string GetClubFacebook(List<IElement> simpleFields)
-        {
-            return GetValueOfSimpleField(simpleFields, "Facebook do Clube");
-        }
+        
 
         private static string GetClubEmail(List<IElement> simpleFields)
         {
@@ -270,11 +288,12 @@ namespace RotaractCoders.Infraestructure.WebCroley.Repository
             var element = simpleFields
                             .FirstOrDefault(x => x.QuerySelector("b")
                             .InnerHtml
-                            .Contains(bText))
-                            .TextContent;
+                            .Contains(bText));
 
-            var result = element
-                .Substring(element.IndexOf(':'))
+            if (element == null) return string.Empty;
+
+            var result = element.TextContent
+                .Substring(element.TextContent.IndexOf(':'))
                 .Replace("\n", string.Empty)
                 .Trim();
 
@@ -291,16 +310,17 @@ namespace RotaractCoders.Infraestructure.WebCroley.Repository
 
         private static List<string> GetValueOfListFields(List<IElement> simpleFields, string bText)
         {
-            return simpleFields
+            var element = simpleFields
                 .FirstOrDefault(x => x.QuerySelector("b")
                 .InnerHtml
-                .Contains(bText))
-                .NextElementSibling
+                .Contains(bText));
+
+            if (element == null) return new List<string>();
+
+            return element.NextElementSibling
                 .QuerySelectorAll("p")
-                .Select(x => new Regex(Regex.Escape("-"))
-                    .Replace(x.TextContent
-                        .Replace("\n", string.Empty) , string.Empty, 1)
-                    .Trim())
+                .Select(x => x.TextContent.Trim())
+                .Select(x => x.StartsWith("-") ? x.Substring(1).Trim() : x.Trim())
                 .ToList();
         }
 
