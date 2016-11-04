@@ -25,6 +25,10 @@ namespace RotaractCoders.CrossCutting
             container.RegisterType<IOmirBrasilRepository, OmirBrasilRepository>(new HierarchicalLifetimeManager());
 
             container.RegisterType<IOmirBrasilApplication, OmirBrasilApplication>(new HierarchicalLifetimeManager());
+
+            container.RegisterType<IProjetoApplication, ProjetoApplication>(new HierarchicalLifetimeManager());
+            container.RegisterType<IDistritoApplication, DistritoApplication>(new HierarchicalLifetimeManager());
+            container.RegisterType<IClubeApplication, ClubeApplication>(new HierarchicalLifetimeManager());
         }
     }
 }

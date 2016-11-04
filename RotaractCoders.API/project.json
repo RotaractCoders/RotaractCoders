@@ -1,5 +1,6 @@
-﻿{
+{
   "dependencies": {
+    "Microsoft.AspNet.WebApi.Client": "5.2.2",
     "Microsoft.AspNetCore.Mvc": "1.0.1",
     "Microsoft.AspNetCore.Routing": "1.0.1",
     "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0",
@@ -10,7 +11,12 @@
     "Microsoft.Extensions.Logging": "1.0.0",
     "Microsoft.Extensions.Logging.Console": "1.0.0",
     "Microsoft.Extensions.Logging.Debug": "1.0.0",
-    "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0"
+    "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
+    "Microsoft.Net.Http": "2.2.22",
+    "RotaractCoders.CrossCutting": "1.0.0-*",
+    "RotaractCoders.Domain": "1.0.0-*",
+    "Unity": "4.0.1",
+    "Unity.AspNet.WebApi": "4.0.1"
   },
 
   "tools": {
