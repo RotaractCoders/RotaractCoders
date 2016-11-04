@@ -1,9 +1,11 @@
-﻿{
+{
   "buildOptions": {
     "emitEntryPoint": true
   },
   "dependencies": {
-    
+    "RotaractCoders.CrossCutting": "1.0.0-*",
+    "RotaractCoders.Domain": "1.0.0-*",
+    "Unity": "4.0.1"
   },
   "frameworks": {
     "net452": {}

@@ -1,31 +1,33 @@
 ﻿using RotaractCoders.Domain.ProjetosSociais.Contracts.Infraestructure.Data.Repository;
-using RotaractCoders.Domain.ProjetosSociais.Entities;
 using System;
-using MongoDB.Driver.Linq;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using RotaractCoders.Domain.ProjetosSociais.Entities;
+using MongoDB.Driver.Linq;
 
 namespace RotaractCoders.Infraestructure.Data.Repository
 {
-    public class ProjetoRepository : IProjetoRepository
+    public class ClubeRepository : IClubeRepository
     {
         private AppDataContext _context;
 
-        public ProjetoRepository(AppDataContext context)
+        public ClubeRepository(AppDataContext context)
         {
             _context = context;
         }
 
-        public Projeto Buscar(int codigo)
+        public Clube Buscar(int codigo)
         {
-            return _context.Projeto
+            return _context.Clube
                 .AsQueryable()
                 .FirstOrDefault(x => x.Codigo == codigo);
         }
 
-        public Guid Save(Projeto projeto)
+        public Guid Salvar(Clube clube)
         {
-            _context.Projeto.Save(projeto);
-            return projeto.Id;
+            _context.Clube.Save(clube);
+            return clube.Id;
         }
 
         public void Dispose()

@@ -1,7 +1,7 @@
 ﻿using AngleSharp;
 using AngleSharp.Dom;
 using RotaractCoders.Domain.ProjetosSociais.Commands.ProjetoCommands;
-using RotaractCoders.Domain.ProjetosSociais.Contracts.Infraestructure.API.Repository;
+using RotaractCoders.Domain.ProjetosSociais.Contracts.Infraestructure.WebCrowley;
 using RotaractCoders.Domain.ProjetosSociais.Entities;
 using System;
 using System.Collections.Generic;

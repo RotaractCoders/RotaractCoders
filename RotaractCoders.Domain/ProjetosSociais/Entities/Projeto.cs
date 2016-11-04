@@ -101,6 +101,35 @@ namespace RotaractCoders.Domain.ProjetosSociais.Entities
 
         public bool Valido() => this.ScopeIsValid();
 
+        public Projeto Atualizar(Projeto projetoAtualizado)
+        {
+            DataUltimaAtualizacao = projetoAtualizado.DataUltimaAtualizacao;
+            Nome = projetoAtualizado.Nome;
+            Justificativa = projetoAtualizado.Justificativa;
+            ObjetivosGerais = projetoAtualizado.ObjetivosGerais;
+            ObjetivosEspecificos = projetoAtualizado.ObjetivosEspecificos;
+            CategoriasPrincipais = projetoAtualizado.CategoriasPrincipais;
+            CategoriasSecundarias = projetoAtualizado.CategoriasSecundarias;
+            DataInicio = projetoAtualizado.DataInicio;
+            DataFim = projetoAtualizado.DataFim;
+            DataFinalizacao = projetoAtualizado.DataFinalizacao;
+            RelatorioFinanceiro = projetoAtualizado.RelatorioFinanceiro;
+            Participantes = projetoAtualizado.Participantes;
+            PublicoAlvo = projetoAtualizado.PublicoAlvo;
+            MeiosDeDivulgacao = projetoAtualizado.MeiosDeDivulgacao;
+            Parcerias = projetoAtualizado.Parcerias;
+            Cronograma = projetoAtualizado.Cronograma;
+            Descricao = projetoAtualizado.Descricao;
+            Fotos = projetoAtualizado.Fotos;
+            Resultados = projetoAtualizado.Resultados;
+            Dificuldade = projetoAtualizado.Dificuldade;
+            PalavraChave = projetoAtualizado.PalavraChave;
+            LicoesAprendidas = projetoAtualizado.LicoesAprendidas;
+            Resumo = projetoAtualizado.Resumo;
+
+            return this;
+        }
+
         #endregion
     }
 }

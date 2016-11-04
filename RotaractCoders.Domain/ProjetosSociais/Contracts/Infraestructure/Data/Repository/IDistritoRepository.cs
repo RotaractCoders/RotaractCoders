@@ -3,10 +3,10 @@ using System;
 
 namespace RotaractCoders.Domain.ProjetosSociais.Contracts.Infraestructure.Data.Repository
 {
-    public interface IProjetoRepository : IDisposable
+    public interface IDistritoRepository : IDisposable
     {
-        Guid Save(Projeto projeto);
+        Guid Salvar(Distrito distrito);
 
-        Projeto Buscar(int codigo);
+        Distrito Buscar(string numero);
     }
 }

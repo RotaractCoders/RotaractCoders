@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.Practices.Unity;
+using RotaractCoders.CrossCutting;
+using RotaractCoders.Domain.ProjetosSociais.Contracts.Application;
 
 namespace RotaractCoders.WebCrawler
 {
@@ -9,6 +9,13 @@ namespace RotaractCoders.WebCrawler
     {
         public static void Main(string[] args)
         {
+            var container = new UnityContainer();
+            DependencyRegister.Register(container, "mongodb://localhost:27017", "Rotaract");
+
+            var omirBrasilApplication = container.Resolve<IOmirBrasilApplication>();
+
+            Console.WriteLine(omirBrasilApplication.PersistirProjeto(10289));
+            Console.ReadKey();
         }
     }
 }
