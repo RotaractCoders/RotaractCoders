@@ -47,7 +47,7 @@ namespace RotaractCoders.Domain.ProjetosSociais.Entities
 
         public int Codigo { get; private set; }
 
-        public DateTime DataUltimaAtualizacao { get; private set; }
+        public DateTime? DataUltimaAtualizacao { get; private set; }
 
         public string Nome { get; private set; }
 
@@ -61,9 +61,9 @@ namespace RotaractCoders.Domain.ProjetosSociais.Entities
 
         public List<string> CategoriasSecundarias { get; private set; }
 
-        public DateTime DataInicio { get; private set; }
+        public DateTime? DataInicio { get; private set; }
 
-        public DateTime DataFim { get; private set; }
+        public DateTime? DataFim { get; private set; }
 
         public DateTime? DataFinalizacao { get; private set; }
 

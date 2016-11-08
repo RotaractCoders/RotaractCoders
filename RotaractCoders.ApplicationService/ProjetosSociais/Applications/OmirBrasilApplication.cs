@@ -30,6 +30,9 @@ namespace RotaractCoders.ApplicationService.ProjetosSociais.Applications
             {
                 var projeto = _omirBrasilRepository.GetByCode(codigo);
 
+                if (projeto == null)
+                    return true;
+
                 var projetoSalvo = _projetoRepository.Buscar(codigo);
 
                 if (_distritoRepository.Buscar(projeto.Clube.Distrito.Numero) == null)

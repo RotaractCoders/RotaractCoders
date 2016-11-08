@@ -15,7 +15,7 @@ namespace RotaractCoders.Domain.ProjetosSociais.Commands.ProjetoCommands
 
         public int Codigo { get; set; }
 
-        public DateTime DataUltimaAtualizacao { get; set; }
+        public DateTime? DataUltimaAtualizacao { get; set; }
 
         public string Nome { get; set; }
 
@@ -29,9 +29,9 @@ namespace RotaractCoders.Domain.ProjetosSociais.Commands.ProjetoCommands
 
         public List<string> CategoriasSecundarias { get; set; }
 
-        public DateTime DataInicio { get; set; }
+        public DateTime? DataInicio { get; set; }
 
-        public DateTime DataFim { get; set; }
+        public DateTime? DataFim { get; set; }
 
         public DateTime? DataFinalizacao { get; set; }
 

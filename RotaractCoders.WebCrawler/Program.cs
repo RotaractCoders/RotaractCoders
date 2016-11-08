@@ -14,7 +14,18 @@ namespace RotaractCoders.WebCrawler
 
             var omirBrasilApplication = container.Resolve<IOmirBrasilApplication>();
 
-            Console.WriteLine(omirBrasilApplication.PersistirProjeto(10289));
+            var inicio = 5047;
+            var sucesso = true;
+
+            while (sucesso)
+            {
+                sucesso = omirBrasilApplication.PersistirProjeto(inicio);
+
+                Console.WriteLine($"{inicio} - {(sucesso ? "Sucesso" : "Erro")}");
+
+                inicio++;
+            }
+
             Console.ReadKey();
         }
     }

@@ -25,6 +25,11 @@ namespace RotaractCoders.Infraestructure.WebCroley.Repository
 
             var document = BrowsingContext.New(config).OpenAsync(omirBrasilUrl).Result;
 
+            if (document.Body.TextContent.Contains("Projeto não encontrado!"))
+            {
+                return null;
+            }
+
             var title = document.QuerySelectorAll(".Titulo");
             var tableTr = document.QuerySelectorAll("#projetoprincipal tr");
 
@@ -88,9 +93,15 @@ namespace RotaractCoders.Infraestructure.WebCroley.Repository
             return GetValueOfSimpleField(listFields, "Fotos do Projeto");
         }
 
-        private static DateTime ExtrairDataUltimaAtualizacao(List<IElement> simpleFields)
+        private static DateTime? ExtrairDataUltimaAtualizacao(List<IElement> simpleFields)
         {
-            return Convert.ToDateTime(GetValueOfSimpleField(simpleFields, "Data Hora Cadastro / Alterado em"));
+            DateTime data;
+            if (DateTime.TryParse(GetValueOfSimpleField(simpleFields, "Data Hora Cadastro / Alterado em"), out data))
+            {
+                return data;
+            }
+
+            return null;
         }
 
         private static string GetProjectSummary(List<IElement> listFields)
@@ -131,8 +142,20 @@ namespace RotaractCoders.Infraestructure.WebCroley.Repository
                 .QuerySelectorAll("tr");
 
             return new Cronograma(element
-                .Select(x => new Atividade(Convert.ToDateTime(x.Children[0].TextContent), x.Children[1].TextContent.Trim()))
+                .Select(x => new Atividade(TryParseDateTime(x.Children[0].TextContent), x.Children[1].TextContent.Trim()))
                 .ToList());
+        }
+
+        private static DateTime? TryParseDateTime(string texto)
+        {
+            DateTime data;
+
+            if (DateTime.TryParse(texto, out data))
+            {
+                return data;
+            }
+
+            return null;
         }
 
         private static List<string> GetProjectPartnerships(List<IElement> listFields)
@@ -164,13 +187,22 @@ namespace RotaractCoders.Infraestructure.WebCroley.Repository
         private static List<string> GetProjectParticipants(List<IElement> listFields)
         {
             return GetValueOfSimpleField(listFields, "Quem trabalho no Projeto | Ação")
-                .Split(new[] { "00" }, StringSplitOptions.None)
-                .Where(x => x != string.Empty)
-                .Select(x => x
-                    .Substring(x.IndexOf(' '))
-                    .Replace("-", string.Empty)
-                    .Trim())
+                .Split('-')
+                .Select(x => RemoverNumeros(x).Trim())
                 .ToList();
+        }
+
+        private static string RemoverNumeros(string texto)
+        {
+            var retorno = new System.Text.StringBuilder();
+
+            foreach (var item in texto)
+            {
+                if (!char.IsNumber(item))
+                    retorno.Append(item);
+            }
+
+            return retorno.ToString();
         }
 
         private static RelatorioFinanceiro GetProjectProjectFinancials(List<IElement> listFields)
@@ -202,14 +234,14 @@ namespace RotaractCoders.Infraestructure.WebCroley.Repository
             return null;
         }
 
-        private static DateTime GetProjectEndDate(List<IElement> listFields)
+        private static DateTime? GetProjectEndDate(List<IElement> listFields)
         {
-            return DateTime.Parse(GetValueOfSimpleField(listFields, "Data Fim"));
+            return TryParseDateTime(GetValueOfSimpleField(listFields, "Data Fim"));
         }
 
-        private static DateTime GetProjectStartDate(List<IElement> listFields)
+        private static DateTime? GetProjectStartDate(List<IElement> listFields)
         {
-            return DateTime.Parse(GetValueOfSimpleField(listFields, "Data Início"));
+            return TryParseDateTime(GetValueOfSimpleField(listFields, "Data Início"));
         }
 
         private static List<string> GetProjectOtherCategories(List<IElement> listFields)
