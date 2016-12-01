@@ -1,4 +1,6 @@
-﻿using Microsoft.Practices.Unity;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Practices.Unity;
 using RotaractCoders.ApplicationService.ProjetosSociais.Applications;
 using RotaractCoders.Domain.ProjetosSociais.Contracts.Application;
 using RotaractCoders.Domain.ProjetosSociais.Contracts.Infraestructure.Data.Repository;
@@ -11,7 +13,7 @@ namespace RotaractCoders.CrossCutting
 {
     public class DependencyRegister
     {
-        public static void Register(UnityContainer container, string connectionString, string dataBase)
+        public static void Register(IUnityContainer container, string connectionString, string dataBase)
         {
             //var context = new AppDataContext("mongodb://localhost:27017", "Rotaract");
             var context = new AppDataContext(connectionString, dataBase);

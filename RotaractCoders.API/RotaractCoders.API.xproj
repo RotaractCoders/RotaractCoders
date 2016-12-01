@@ -6,7 +6,7 @@
   </PropertyGroup>
   <Import Project="$(VSToolsPath)\DotNet\Microsoft.DotNet.Props" Condition="'$(VSToolsPath)' != ''" />
   <PropertyGroup Label="Globals">
-    <ProjectGuid>de667e06-4fbe-4a76-95d9-f766c7bf75fa</ProjectGuid>
+    <ProjectGuid>99da1e39-ce89-44ba-8ff2-5513632c4bd1</ProjectGuid>
     <RootNamespace>RotaractCoders.API</RootNamespace>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">.\obj</BaseIntermediateOutputPath>
     <OutputPath Condition="'$(OutputPath)'=='' ">.\bin\</OutputPath>
